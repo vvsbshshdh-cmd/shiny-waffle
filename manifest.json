@@ -1,36 +1,43 @@
 {
   "manifest_version": 3,
-  "name": "Network & Events Monitor",
-  "version": "1.0",
-  "description": "Advanced network monitoring and event visibility with control capabilities",
+  "name": "Network Monitor Extension",
+  "version": "1.0.0",
+  "description": "A Chrome extension for monitoring and controlling network activity.",
   "permissions": [
-    "debugger",
+    "tabs",
     "webRequest",
     "webRequestBlocking",
     "storage",
-    "activeTab",
-    "scripting",
-    "tabs"
-  ],
-  "host_permissions": [
-    "<all_urls>"
+    "activeTab"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/background/background.ts"
   },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "js": ["content-script.js"],
-    "run_at": "document_start"
-  }],
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "Network & Events Monitor"
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
   },
-  "devtools_page": "panel.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/contentScript.ts"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["src/panel/panel.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
-  }
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "homepage_url": "https://example.com",
+  "update_url": "https://example.com/update.json"
 }

@@ -1,0 +1,48 @@
+{
+  "name": "network-monitor-extension",
+  "version": "1.0.0",
+  "description": "A Chrome extension for monitoring and controlling network activity.",
+  "main": "src/background/background.ts",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "keywords": [
+    "chrome",
+    "extension",
+    "network",
+    "monitoring",
+    "control"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.1",
+    "eslint": "^7.32.0",
+    "jest": "^27.2.5"
+  },
+  "browser": {
+    "src/background/background.ts": "background.js",
+    "src/content/contentScript.ts": "contentScript.js",
+    "src/popup/popup.tsx": "popup.js",
+    "src/panel/panel.tsx": "panel.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+      "no-console": "warn",
+      "quotes": ["error", "single"],
+      "semi": ["error", "always"]
+    }
+  }
+}
